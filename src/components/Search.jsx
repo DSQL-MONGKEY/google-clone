@@ -1,6 +1,8 @@
 
 export const Search = () => {
    return (
-      <div>Search dasdasd</div>
+      <div className="">
+         Search
+      </div>
    )
 }

@@ -1,8 +1,9 @@
-import { PropTypes } from 'prop-types'
 import { ColorRing } from 'react-loader-spinner'
 
+import { useAppContext } from '../App'
 
-const Loading = ({darkTheme, setDarkTheme}) => {
+const Loading = () => {
+   const darkTheme  = useAppContext()
   return (
    <div className="flex justify-center items-center">
       <ColorRing
@@ -12,14 +13,9 @@ const Loading = ({darkTheme, setDarkTheme}) => {
          ariaLabel='blocks-loading'
          wrapperStyle={{  }}
          wrapperClass='blocks-wrapper'
-         colors={['#e15b64', '#f47e60', '#f8b26a', '#abbd81', '#849b87']}
+         colors={darkTheme ? ['#390080', '#f47e60', '#f8b26a', '#abbd81', '#849b87'] : ['#390080', '#ffd700', '#f8e08e', '#ff6a13', '#2dccd3']}
       />
    </div>
   )
 }
 export default Loading
-
-Loading.propTypes = {
-   darkTheme: PropTypes.any,
-   setDarkTheme: PropTypes.func
-}

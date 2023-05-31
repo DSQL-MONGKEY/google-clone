@@ -9,7 +9,7 @@ const baseUrl = 'https://google-search72.p.rapidapi.com';
 const ResultContextProvider = ({ children }) => {
    const [results, setResult] = useState([])
    const [isLoading, setIsLoading] = useState(false)
-   const [searchTerm, setSearchTerm] = useState('')
+   const [searchTerm, setSearchTerm] = useState('john wick')
 
    /* Fetching the API */
    const getResults = async (type) => {

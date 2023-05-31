@@ -16,7 +16,7 @@ export const DomRoutes = () => {
           element={<Result/>} 
         />
         <Route
-          path="/images"
+          path="/imagesearch"
           element={<Result/>}
         />
         <Route

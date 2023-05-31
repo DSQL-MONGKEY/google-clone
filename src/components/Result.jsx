@@ -13,18 +13,20 @@ export const Result = () => {
       if(searchTerm) {
          if(location.pathname === '/imagesearch') {
             getResults(`/imagesearch?q=${searchTerm}`)
+         } else {
+            getResults(`${location.pathname}?q=${searchTerm}`)
          }
       }
-      getResults('yt')
+      console.log(location.pathname)
    },[])
 
    if(isLoading) return <Loading/>
 
    switch(location.pathname) {
-      case '/search' :
+      case '/search' : 
          return (
             <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
-               {results?.result?.map(({link, title}, index) => (
+               {results?.items?.map(({link, title}, index) => (
                   <div key={index} className="md:w-2/5 w-full">
                      <a href={link} target="_blank" rel="noreferrer">
                         <p className="text-sm">
@@ -38,12 +40,12 @@ export const Result = () => {
                ))}
             </div>
          )
-      case '/images' :
+      case '/imagesearch' :
          return (
             <div className="flex flex-wrap justify-center items-center ">
-               {results?.image_result?.map(({ image, link: {href, title}, index }) => (
-                  <a key={index} href="href" className="sm:p-3 p-5" target="_blank" rel="noreferrer">
-                     <img src={image?.src } alt={title} loading="lazy" />
+               {results?.items?.map(({ originalImageUrl, thumbnailImageUrl, contextLink, title,index }) => (
+                  <a key={index} href={contextLink} className="sm:p-3 p-5" target="_blank" rel="noreferrer">
+                     <img src={originalImageUrl } alt={title} loading="lazy" width={200} height={200}/>
                      <p className="w-36 break-words text-sm mt-2">
                         {title}
                      </p>
@@ -51,10 +53,6 @@ export const Result = () => {
                ))}
             </div>
          )
-      case '/news' :
-         return 'news'
-      case 'videos' :
-         return 'videos'
       default:
          return 'error'
    }

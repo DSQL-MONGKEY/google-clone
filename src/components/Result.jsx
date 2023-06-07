@@ -43,7 +43,7 @@ export const Result = () => {
       case '/imagesearch' :
          return (
             <div className="flex flex-wrap justify-center items-center ">
-               {results?.items?.map(({ originalImageUrl, thumbnailImageUrl, contextLink, title,index }) => (
+               {results?.items?.map(({ originalImageUrl, thumbnailImageUrl, contextLink, title }, index) => (
                   <a key={index} href={contextLink} className="sm:p-3 p-5" target="_blank" rel="noreferrer">
                      <img src={originalImageUrl } alt={title} loading="lazy" width={200} height={200}/>
                      <p className="w-36 break-words text-sm mt-2">

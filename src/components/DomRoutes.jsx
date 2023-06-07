@@ -9,7 +9,6 @@ export const DomRoutes = () => {
       <Routes>
         <Route 
           path="/" 
-          element={<Search/>} 
         />          
         <Route 
           path="/search"
